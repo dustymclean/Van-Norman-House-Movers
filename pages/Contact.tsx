@@ -4,10 +4,38 @@ import { COMPANY_INFO } from '../constants';
 
 const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formspree.io/f/xykprryl", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const result = await response.json();
+        setError(result.error || "Something went wrong. Please try calling us instead.");
+      }
+    } catch (err) {
+      setError("Failed to send message. Please check your connection or call us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,7 +83,7 @@ const Contact: React.FC = () => {
                 Located right off Highway 51 in Bogue Chitto. We've been at this same location for over two decades.
               </p>
               <div className="h-48 bg-gray-200 rounded-sm flex items-center justify-center border-2 border-dashed border-gray-300">
-                <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">Map View Placeholder</span>
+                <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">Bogue Chitto, MS</span>
               </div>
             </div>
           </div>
@@ -64,54 +92,69 @@ const Contact: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="bg-white p-8 md:p-16 border-4 border-gray-50 shadow-sm rounded-sm">
               {submitted ? (
-                <div className="text-center py-24">
+                <div className="text-center py-24 animate-in fade-in duration-700">
                   <div className="w-24 h-24 bg-brand-gold/20 text-brand-gold rounded-full flex items-center justify-center mx-auto mb-8 text-5xl font-black">✓</div>
                   <h2 className="text-4xl font-heading font-black text-brand-blue mb-4 uppercase">Message Sent</h2>
                   <p className="text-gray-600 text-lg mb-10">We have received your details. Our office manager will review the request and Chauncey will be in touch.</p>
                   <button onClick={() => setSubmitted(false)} className="text-brand-blue font-black uppercase tracking-widest border-b-4 border-brand-gold pb-1 hover:text-brand-gold transition">Send Another Request</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-8" action="https://formspree.io/f/xykprryl" method="POST">
                   <div className="border-b-4 border-brand-gold pb-4 mb-8">
                     <h2 className="font-heading text-3xl font-black text-brand-blue uppercase">Request a Detailed Quote</h2>
                     <p className="text-gray-500 font-bold uppercase tracking-widest text-xs mt-2">All information is kept confidential</p>
                   </div>
                   
+                  {error && (
+                    <div className="p-4 bg-red-50 text-red-600 font-bold rounded-sm border border-red-200">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                       <label className="block text-sm font-black text-brand-blue uppercase mb-3">Your Full Name</label>
-                      <input required type="text" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
+                      <input required name="full_name" type="text" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
                     </div>
                     <div>
-                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Phone Number</label>
-                      <input required type="tel" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
+                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Your Email Address</label>
+                      <input required name="email" type="email" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Property Address (Current)</label>
-                      <input required type="text" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
+                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Phone Number</label>
+                      <input required name="phone" type="tel" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
                     </div>
                     <div>
-                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Type of Service</label>
-                      <select className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold">
-                        <option>Structural House Moving</option>
-                        <option>House Raising / Elevation</option>
-                        <option>Foundation Leveling</option>
-                        <option>Commercial Move</option>
-                        <option>Other / Consulting</option>
-                      </select>
+                      <label className="block text-sm font-black text-brand-blue uppercase mb-3">Property Address (Current)</label>
+                      <input required name="address" type="text" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-black text-brand-blue uppercase mb-3">Project Details</label>
-                    <textarea required rows={6} className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" placeholder="Please describe the size of the house, approximate move distance, and any special concerns..."></textarea>
+                    <label className="block text-sm font-black text-brand-blue uppercase mb-3">Type of Service</label>
+                    <select name="service_type" className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold">
+                      <option value="Residential House Moving">Residential House Moving</option>
+                      <option value="House Raising / Elevation">House Raising / Elevation</option>
+                      <option value="Foundation Leveling">Foundation Leveling</option>
+                      <option value="Commercial Move">Commercial Move</option>
+                      <option value="Other / Consulting">Other / Consulting</option>
+                    </select>
                   </div>
 
-                  <button type="submit" className="w-full bg-brand-blue text-white py-6 font-black text-2xl uppercase tracking-widest hover:bg-brand-slate transition shadow-xl">
-                    Submit Project Details
+                  <div>
+                    <label className="block text-sm font-black text-brand-blue uppercase mb-3">Your Message / Project Details</label>
+                    <textarea required name="message" rows={6} className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-100 focus:border-brand-gold outline-none transition font-bold" placeholder="Please describe the size of the house, approximate move distance, and any special concerns..."></textarea>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={loading}
+                    className={`w-full bg-brand-blue text-white py-6 font-black text-2xl uppercase tracking-widest hover:bg-brand-slate transition shadow-xl ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                    {loading ? 'Sending...' : 'Send Request'}
                   </button>
                   
                   <div className="text-center bg-brand-gold/10 p-4 rounded-sm">

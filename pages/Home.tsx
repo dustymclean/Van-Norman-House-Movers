@@ -9,9 +9,10 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-blue via-brand-blue/60 to-transparent z-10"></div>
+        {/* Using a structural house move image */}
         <img 
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070&auto=format&fit=crop" 
-          alt="Heavy machinery lifting a house" 
+          src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=2072&auto=format&fit=crop" 
+          alt="Large structural house being lifted by hydraulic equipment" 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -120,19 +121,17 @@ const Home: React.FC = () => {
           </div>
           <div className="order-1 lg:order-2">
             <h3 className="font-heading text-3xl md:text-5xl font-black text-brand-blue mb-8 uppercase leading-tight">
-              Tired of <span className="text-brand-gold">Wrong Info</span> Online?
+              The Official Home of <br/><span className="text-brand-gold">Van Norman House Movers</span>
             </h3>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-              We know directory sites like Manta and Yelp often list the wrong names or outdated phone numbers. Don't be fooled by the scrapers.
-            </p>
-            <p className="text-brand-blue font-black text-xl mb-10">
-              This is the <span className="underline decoration-brand-gold decoration-4">Official Home</span> of Van Norman House Movers LLC. 
+            <p className="text-brand-blue font-black text-xl mb-10 leading-relaxed">
+              Serving Brookhaven, Bogue Chitto, and Lincoln County with structural moving and elevation excellence.
             </p>
             <div className="space-y-6">
-              <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g,'')}`} className="block text-3xl md:text-5xl font-black text-brand-blue hover:text-brand-gold transition">
+              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm mb-2">Primary Contact Line</p>
+              <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g,'')}`} className="block text-4xl md:text-6xl font-black text-brand-blue hover:text-brand-gold transition">
                 {COMPANY_INFO.phone}
               </a>
-              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">Bogue Chitto, Brookhaven, & Lincoln County Experts</p>
+              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">MS & LA Licensed | BBB A+ Accredited</p>
             </div>
           </div>
         </div>

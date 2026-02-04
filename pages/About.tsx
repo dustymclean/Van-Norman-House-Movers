@@ -9,8 +9,8 @@ const About: React.FC = () => {
       <section className="relative h-[400px] flex items-center justify-center">
         <div className="absolute inset-0 bg-brand-blue/80 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop" 
-          alt="Vintage machinery and structural work" 
+          src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop" 
+          alt="Heavy duty steel beams and industrial equipment" 
           className="absolute inset-0 w-full h-full object-cover" 
         />
         <div className="relative z-20 text-center px-4">
@@ -76,8 +76,8 @@ const About: React.FC = () => {
           </div>
           <div className="relative">
              <img 
-               src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2112&auto=format&fit=crop" 
-               alt="Mississippi Countryside" 
+               src="https://images.unsplash.com/photo-1621905252507-b352220730d8?q=80&w=2070&auto=format&fit=crop" 
+               alt="Construction crane and structural framing" 
                className="rounded-sm shadow-2xl border-4 border-white"
              />
              <div className="absolute -bottom-8 -left-8 bg-brand-gold text-brand-blue p-8 font-black text-2xl uppercase shadow-xl hidden md:block">

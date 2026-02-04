@@ -43,7 +43,7 @@ const Services: React.FC = () => {
              </p>
            </div>
            <div className="shrink-0">
-             <img src="https://picsum.photos/seed/trucks/400/300" alt="Moving Equipment" className="rounded-xl shadow-lg w-full max-w-xs" />
+             <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=400&h=300&fit=crop" alt="High precision structural equipment" className="rounded-xl shadow-lg w-full max-w-xs" />
            </div>
         </div>
       </div>
