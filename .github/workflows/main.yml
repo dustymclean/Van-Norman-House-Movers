@@ -3,17 +3,18 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # or your branch name
+      - main  # deploy on pushes to main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v7
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # your site files are in root folder
+          publish_dir: ./   # or your build folder
+          cname: vannormanmovers.com   # <--- THIS ensures the CNAME is deployed
