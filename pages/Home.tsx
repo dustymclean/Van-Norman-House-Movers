@@ -17,10 +17,6 @@ const Home: React.FC = () => {
         />
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <div className="max-w-3xl">
-            <div className="flex items-center space-x-2 mb-6">
-              <span className="h-1 w-12 bg-brand-gold"></span>
-              <span className="font-bold text-brand-gold uppercase tracking-[0.3em] text-sm">Official Website</span>
-            </div>
             <h1 className="font-heading text-5xl md:text-8xl font-black mb-6 leading-tight uppercase tracking-tight">
               Moving <span className="text-brand-gold">Mississippi & Louisiana</span> Since 2001
             </h1>
@@ -121,7 +117,7 @@ const Home: React.FC = () => {
           </div>
           <div className="order-1 lg:order-2">
             <h3 className="font-heading text-3xl md:text-5xl font-black text-brand-blue mb-8 uppercase leading-tight">
-              The Official Home of <br/><span className="text-brand-gold">Van Norman House Movers</span>
+              Your Trusted Partners: <br/><span className="text-brand-gold">Van Norman House Movers</span>
             </h3>
             <p className="text-brand-blue font-black text-xl mb-10 leading-relaxed">
               Serving Brookhaven, Bogue Chitto, and Lincoln County with structural moving and elevation excellence.

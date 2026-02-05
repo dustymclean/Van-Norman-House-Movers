@@ -14,8 +14,8 @@ const Footer: React.FC = () => {
               Family-owned and locally trusted in Bogue Chitto, MS since 2001. We provide structural expertise with old-school values.
             </p>
             <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
-              <p className="text-brand-gold font-bold text-sm uppercase mb-2">OFFICIAL VERIFIED WEBSITE</p>
-              <p className="text-xs text-gray-400 italic">This is the ONLY official web presence for Van Norman House Movers LLC (aside from our verified BBB profile). Beware of third-party directories with incorrect data.</p>
+              <p className="text-brand-gold font-bold text-sm uppercase mb-2">VERIFIED WEB PRESENCE</p>
+              <p className="text-xs text-gray-400 italic">This is the primary web portal for Van Norman House Movers LLC and our verified BBB profile. Please verify all information directly via our contact lines.</p>
             </div>
           </div>
 
