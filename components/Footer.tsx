@@ -15,17 +15,17 @@ const Footer: React.FC = () => {
             </p>
             <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
               <p className="text-brand-gold font-bold text-sm uppercase mb-2">VERIFIED WEB PRESENCE</p>
-              <p className="text-xs text-gray-400 italic">This is the primary web portal for Van Norman House Movers LLC and our verified BBB profile. Please verify all information directly via our contact lines.</p>
+              <p className="text-xs text-gray-400 italic">This is the primary web portal for Van Norman House Movers LLC. Please verify all information directly via our contact lines.</p>
             </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-brand-gold mb-8 uppercase tracking-widest text-sm">Services</h4>
+            <h4 className="font-bold text-brand-gold mb-8 uppercase tracking-widest text-sm">Navigation</h4>
             <ul className="space-y-4 text-gray-300 font-medium">
-              <li><Link to="/services" className="hover:text-brand-gold transition">Structural Moving</Link></li>
-              <li><Link to="/services" className="hover:text-brand-gold transition">House Raising</Link></li>
-              <li><Link to="/services" className="hover:text-brand-gold transition">Foundation Leveling</Link></li>
-              <li><Link to="/services" className="hover:text-brand-gold transition">Route Permitting</Link></li>
+              <li><Link to="/gallery" className="hover:text-brand-gold transition">Project Gallery</Link></li>
+              <li><Link to="/services" className="hover:text-brand-gold transition">Our Services</Link></li>
+              <li><Link to="/about" className="hover:text-brand-gold transition">About the Team</Link></li>
+              <li><Link to="/faq" className="hover:text-brand-gold transition">Common Questions</Link></li>
               <li><Link to="/contact" className="hover:text-brand-gold transition">Request a Quote</Link></li>
             </ul>
           </div>
@@ -76,9 +76,16 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-10 text-center text-gray-500 text-xs tracking-widest uppercase">
+        <div className="border-t border-gray-800 pt-10 text-center text-gray-500 text-xs tracking-widest uppercase relative">
           <p>© {new Date().getFullYear()} {COMPANY_INFO.name}. All Rights Reserved. Licensed, Bonded, and Insured.</p>
           <p className="mt-2 text-gray-600">Based in Bogue Chitto, Serving Lincoln County, MS & All of Louisiana.</p>
+          
+          {/* THE HIDDEN ADMIN LINK - Bottom Right Corner */}
+          <Link to="/admin" className="absolute right-0 bottom-0 opacity-10 hover:opacity-100 transition duration-500 p-2 group" title="Admin Access">
+            <svg className="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </Link>
         </div>
       </div>
     </footer>

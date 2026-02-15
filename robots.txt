@@ -4,14 +4,19 @@ Allow: /
 # Sitemaps
 Sitemap: https://vannormanmovers.com/sitemap.xml
 
-# Crawl delay for specific bots if needed
-# Crawl-delay: 10
+# Crawl delay
+Crawl-delay: 5
 
 # Host
 Host: https://vannormanmovers.com
 
-# Organic SEO Data
+# Organic SEO Target Keywords
 # Van Norman House Movers LLC
 # Structural Moving Mississippi & Louisiana
 # House Raising Bogue Chitto, MS
-# Foundation Leveling Brookhaven, MS
+# House Movers Brookhaven, MS
+# Structural Elevation Jackson, MS
+# Historic Home Moving Natchez, MS
+# Foundation Leveling Baton Rouge, LA
+# Slidell House Raising Experts
+# New Orleans Structural Relocation

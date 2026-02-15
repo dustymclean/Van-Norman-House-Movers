@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
           
           <div className="hidden lg:flex items-center space-x-8">
             <Link to="/" className="text-brand-blue font-bold uppercase tracking-wider hover:text-brand-gold transition">Home</Link>
+            <Link to="/gallery" className="text-brand-blue font-bold uppercase tracking-wider hover:text-brand-gold transition">Gallery</Link>
             <Link to="/services" className="text-brand-blue font-bold uppercase tracking-wider hover:text-brand-gold transition">Services</Link>
             <Link to="/about" className="text-brand-blue font-bold uppercase tracking-wider hover:text-brand-gold transition">About Us</Link>
             <Link to="/faq" className="text-brand-blue font-bold uppercase tracking-wider hover:text-brand-gold transition">FAQ</Link>
@@ -50,6 +51,7 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden bg-brand-blue text-white border-t border-brand-gold">
           <div className="px-4 pt-2 pb-6 space-y-1 text-center">
             <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-xl font-bold uppercase">Home</Link>
+            <Link to="/gallery" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-xl font-bold uppercase text-brand-gold">Gallery</Link>
             <Link to="/services" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-xl font-bold uppercase">Services</Link>
             <Link to="/about" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-xl font-bold uppercase">About Us</Link>
             <Link to="/faq" onClick={() => setIsOpen(false)} className="block px-3 py-4 text-xl font-bold uppercase">FAQ</Link>

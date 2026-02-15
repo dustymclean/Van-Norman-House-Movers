@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES, COMPANY_INFO } from '../constants';
+import { SERVICES, COMPANY_INFO, PROJECTS, TESTIMONIALS } from '../constants';
 
 const Home: React.FC = () => {
   return (
@@ -9,13 +9,12 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-blue via-brand-blue/60 to-transparent z-10"></div>
-        {/* Using a structural house move image */}
         <img 
           src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=2072&auto=format&fit=crop" 
           alt="Large structural house being lifted by hydraulic equipment" 
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white pt-24 md:pt-32">
           <div className="max-w-3xl">
             <h1 className="font-heading text-5xl md:text-8xl font-black mb-6 leading-tight uppercase tracking-tight">
               Moving <span className="text-brand-gold">Mississippi & Louisiana</span> Since 2001
@@ -36,7 +35,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Trust/Credentials Banner */}
+      {/* Stats/Trust Bar */}
       <section className="bg-brand-blue py-12 border-b-8 border-brand-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-white items-center">
@@ -60,7 +59,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Main Service Section */}
+      {/* Services Section */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
@@ -95,43 +94,100 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* "Old School Values" CTA */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="bg-brand-blue p-10 md:p-16 rounded-sm text-white shadow-2xl relative">
-              <div className="absolute top-0 right-0 p-8">
-                <svg className="w-16 h-16 text-brand-gold opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9.01703V12H12.017V9H14.017V12H17.017V14H14.017V16H15.017C16.1216 16 17.017 16.8954 17.017 18V21H14.017ZM10.017 21H7.01703V18C7.01703 16.8954 7.91246 16 9.01703 16H10.017V21ZM21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"/></svg>
+      {/* Featured Projects - Visual Authority */}
+      <section className="py-24 bg-brand-blue text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="font-heading text-4xl md:text-6xl font-black mb-12 uppercase">Recent <span className="text-brand-gold">Project</span> Spotlight</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {PROJECTS.map((project, idx) => (
+              <div key={idx} className="group relative overflow-hidden bg-white/5 border border-white/10 rounded-sm">
+                <div className="aspect-video overflow-hidden">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                </div>
+                <div className="p-6">
+                  <span className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-2 block">{project.location}</span>
+                  <h3 className="font-heading text-2xl font-bold uppercase mb-4">{project.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{project.description}</p>
+                </div>
               </div>
-              <h2 className="font-heading text-4xl font-black mb-8 uppercase leading-tight">
-                Built on <span className="text-brand-gold">Integrity</span>
-              </h2>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed italic">
-                "We aren't just moving buildings; we are preserving homes and history. With nearly 25 years in Bogue Chitto and beyond, we handle the heavy lifting so you don't have to."
-              </p>
-              <div className="border-t border-white/20 pt-8">
-                <p className="font-bold text-white text-xl">Chauncey Van Norman</p>
-                <p className="text-brand-gold font-bold uppercase tracking-widest text-sm">Owner & Operator</p>
-              </div>
-            </div>
+            ))}
           </div>
-          <div className="order-1 lg:order-2">
-            <h3 className="font-heading text-3xl md:text-5xl font-black text-brand-blue mb-8 uppercase leading-tight">
-              Your Trusted Partners: <br/><span className="text-brand-gold">Van Norman House Movers</span>
-            </h3>
-            <p className="text-brand-blue font-black text-xl mb-10 leading-relaxed">
-              Serving Brookhaven, Bogue Chitto, and Lincoln County with structural moving and elevation excellence.
-            </p>
-            <div className="space-y-6">
-              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm mb-2">Primary Contact Line</p>
-              <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g,'')}`} className="block text-4xl md:text-6xl font-black text-brand-blue hover:text-brand-gold transition">
-                {COMPANY_INFO.phone}
-              </a>
-              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">MS & LA Licensed | BBB A+ Accredited</p>
+        </div>
+      </section>
+
+      {/* Testimonials - Social Proof */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
+            <div className="lg:col-span-1">
+              <h2 className="font-heading text-4xl md:text-5xl font-black text-brand-blue mb-6 uppercase">Built on <span className="text-brand-gold">Trust</span></h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                We aren't just moving buildings; we are preserving homes and history. Here is what our clients have to say.
+              </p>
+              <div className="flex space-x-2">
+                {[1,2,3,4,5].map(s => <span key={s} className="text-brand-gold text-2xl">★</span>)}
+              </div>
+              <p className="text-sm font-bold text-brand-blue uppercase tracking-widest mt-2">Verified 5-Star Service</p>
+            </div>
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {TESTIMONIALS.map((t, idx) => (
+                <div key={idx} className="bg-gray-50 p-10 border-l-8 border-brand-gold">
+                  <p className="text-gray-700 italic text-lg mb-6">"{t.content}"</p>
+                  <div>
+                    <p className="font-bold text-brand-blue uppercase">{t.author}</p>
+                    <p className="text-brand-gold font-bold text-xs uppercase tracking-widest">{t.location}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Local SEO Town Section - Organic Ranking */}
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="font-heading text-3xl md:text-5xl font-black text-brand-blue mb-8 uppercase leading-tight">
+                Your Trusted Partners: <br/><span className="text-brand-gold">Van Norman House Movers</span>
+              </h2>
+              <p className="text-brand-blue font-black text-xl mb-10 leading-relaxed">
+                Serving Brookhaven, Bogue Chitto, and Lincoln County with structural moving and elevation excellence.
+              </p>
+              <div className="space-y-6">
+                <p className="text-gray-500 font-bold uppercase tracking-widest text-sm mb-2">Primary Contact Line</p>
+                <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g,'')}`} className="block text-4xl md:text-6xl font-black text-brand-blue hover:text-brand-gold transition">
+                  {COMPANY_INFO.phone}
+                </a>
+                <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">MS & LA Licensed | BBB A+ Accredited</p>
+              </div>
+            </div>
+            <div className="bg-brand-blue p-8 text-white rounded-sm">
+              <h3 className="font-heading text-xl font-bold uppercase mb-6 text-brand-gold tracking-widest">Active Service Areas</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {COMPANY_INFO.serviceAreas.map((area, idx) => (
+                  <div key={idx} className="flex items-center text-sm font-bold opacity-80">
+                    <span className="w-1.5 h-1.5 bg-brand-gold rounded-full mr-2"></span>
+                    {area}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 pt-8 border-t border-white/10 text-xs text-gray-400 italic">
+                Don't see your town? We move houses across the entire Mississippi and Louisiana state regions. Call for a custom route evaluation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden">
+        <a href={`tel:${COMPANY_INFO.phone.replace(/\D/g,'')}`} className="flex items-center justify-center bg-brand-gold text-brand-blue py-4 px-6 rounded-full font-black text-lg shadow-2xl active:scale-95 transition-transform border-4 border-white">
+           <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 005.47 5.47l.773-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+           CALL NOW: {COMPANY_INFO.phone}
+        </a>
+      </div>
     </div>
   );
 };
